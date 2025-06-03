@@ -1,0 +1,38 @@
+name: SAFe Reporting
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Every Monday at 9am UTC
+  workflow_dispatch:
+
+jobs:
+  generate-safe-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate SAFe Status Report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Example: List open issues by type and milestone
+            const { data: issues } = await github.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+            const summary = {};
+            for (const issue of issues) {
+              const type = (issue.labels.find(l => l.name.startsWith('type:')) || {}).name || 'unlabeled';
+              const milestone = issue.milestone ? issue.milestone.title : 'none';
+              if (!summary[type]) summary[type] = {};
+              if (!summary[type][milestone]) summary[type][milestone] = 0;
+              summary[type][milestone]++;
+            }
+            let report = '# SAFe Status Report\n';
+            for (const [type, milestones] of Object.entries(summary)) {
+              report += `\n## ${type}\n`;
+              for (const [milestone, count] of Object.entries(milestones)) {
+                report += `- ${milestone}: ${count} issues\n`;
+              }
+            }
+            core.summary.addRaw(report).write();

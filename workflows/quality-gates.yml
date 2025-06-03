@@ -1,0 +1,25 @@
+name: SAFe Quality Gates
+
+on:
+  issues:
+    types: [closed]
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+jobs:
+  definition-of-done:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Definition of Done for Stories
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.issue ? context.payload.issue.labels.map(l => l.name) : [];
+            if (labels.includes('type: story')) {
+              const body = context.payload.issue.body;
+              const checklistItems = (body.match(/- \[x\]/g) || []).length;
+              const totalItems = (body.match(/- \[/g) || []).length;
+              if (totalItems > 0 && checklistItems < totalItems) {
+                core.setFailed(`Definition of Done incomplete: ${checklistItems}/${totalItems} criteria met.`);
+              }
+            }

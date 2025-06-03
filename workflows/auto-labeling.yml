@@ -1,0 +1,23 @@
+name: Auto-Label SAFe Issue Types
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  enforce-type-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for SAFe type label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const typeLabels = [
+              'type: epic', 'type: feature', 'type: story',
+              'type: task', 'type: bug', 'type: spike', 'type: improvement'
+            ];
+            const labels = context.payload.issue.labels.map(l => l.name);
+            const hasType = labels.some(l => typeLabels.includes(l));
+            if (!hasType) {
+              core.setFailed('Issue must have a SAFe type label.');
+            }

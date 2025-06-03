@@ -1,0 +1,34 @@
+name: SAFe Milestone & Parent Enforcement
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+jobs:
+  enforce-milestone-parent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check milestone and parent relationships
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const typeLabels = {
+              'type: epic': 'PI',
+              'type: feature': 'Release',
+              'type: story': 'Sprint',
+              'type: task': 'Sprint',
+              'type: bug': 'Sprint',
+              'type: spike': 'Sprint',
+              'type: improvement': 'Sprint'
+            };
+            const issue = context.payload.issue;
+            const labels = issue.labels.map(l => l.name);
+            const type = labels.find(l => l.startsWith('type:'));
+            if (!type) {
+              core.setFailed('Issue must have a SAFe type label.');
+              return;
+            }
+            if (!issue.milestone) {
+              core.setFailed('Issue must be assigned to a milestone.');
+            }
+            // Optionally, add parent-child relationship checks here
