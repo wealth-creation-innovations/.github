@@ -1,0 +1,71 @@
+name: Epic
+description: Track a large body of work that can be broken down into a number of smaller tasks (features, user stories).
+title: "[Epic]: <concise summary>"
+labels: ["type: epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Epic Overview
+        Please provide a high-level summary of this epic and its goals.
+  - type: input
+    id: business_value
+    attributes:
+      label: Business Value (1-100)
+      description: "Quantify the business impact for prioritization. Use a 1-100 scale."
+      placeholder: "75"
+    validations:
+      required: true
+  - type: input
+    id: epic_owner
+    attributes:
+      label: Epic Owner (GitHub username)
+      description: "Who is responsible for this epic? Use @username."
+      placeholder: "@epic-owner"
+    validations:
+      required: true
+  - type: dropdown
+    id: pi_assignment
+    attributes:
+      label: PI Assignment
+      description: "Assign this epic to a Program Increment (PI)."
+      options:
+        - "PI-2025-Q2"
+        - "PI-2025-Q3"
+        - "PI-2025-Q4"
+        - "Future PI"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Epic Summary
+      description: What is the goal of this epic? Why is it important?
+      placeholder: Describe the purpose and impact of this epic.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What must be true for this epic to be considered complete?
+      placeholder: List clear, testable criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: child_features
+    attributes:
+      label: Child Features (list or "None")
+      description: List the features (subtasks) that make up this epic, or "None" if not applicable.
+      placeholder: |
+        - Feature 1 (#123)
+        - Feature 2 (#124)
+        - None
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other context, links, or information.
+      placeholder: Optional

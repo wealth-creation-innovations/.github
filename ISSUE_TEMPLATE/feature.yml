@@ -1,0 +1,74 @@
+name: Feature
+description: Propose a new feature or enhancement that supports an epic.
+title: "[Feature]: <concise summary>"
+labels: ["type: feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Overview
+        Please provide a summary of this feature and its intended value.
+  - type: input
+    id: business_value
+    attributes:
+      label: Business Value (1-100)
+      description: "Quantify the business impact for prioritization. Use a 1-100 scale."
+      placeholder: "50"
+    validations:
+      required: true
+  - type: input
+    id: story_points
+    attributes:
+      label: Story Points (Fibonacci)
+      description: "Estimate the effort using Fibonacci sequence (1, 2, 3, 5, 8, 13, 21)."
+      placeholder: "5"
+    validations:
+      required: true
+  - type: input
+    id: feature_owner
+    attributes:
+      label: Feature Owner (GitHub username)
+      description: "Who is responsible for this feature? Use @username."
+      placeholder: "@feature-owner"
+    validations:
+      required: true
+  - type: input
+    id: parent_epic
+    attributes:
+      label: Parent Epic (issue number or link)
+      description: "Reference the parent epic for this feature (e.g., #123)."
+      placeholder: "#123"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: What is the goal of this feature? Why is it important?
+      placeholder: Describe the purpose and impact of this feature.
+    validations:
+      required: true
+  - type: textarea
+    id: user_stories
+    attributes:
+      label: User Stories
+      description: List the user stories that this feature addresses.
+      placeholder: |
+        - As a user, I want ...
+        - As an admin, I need ...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What must be true for this feature to be considered complete?
+      placeholder: List clear, testable criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other context, links, or information.
+      placeholder: Optional

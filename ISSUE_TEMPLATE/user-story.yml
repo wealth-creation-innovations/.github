@@ -1,0 +1,72 @@
+name: User Story
+description: Describe a specific user need or requirement.
+title: "[User Story]: <concise summary>"
+labels: ["type: story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## User Story Overview
+        Please provide a user story in the format: As a [user], I want [goal], so that [reason].
+  - type: input
+    id: story_points
+    attributes:
+      label: Story Points (Fibonacci)
+      description: "Estimate the effort using Fibonacci sequence (1, 2, 3, 5, 8, 13, 21)."
+      placeholder: "3"
+    validations:
+      required: true
+  - type: input
+    id: story_owner
+    attributes:
+      label: Story Owner (GitHub username)
+      description: "Who is responsible for this story? Use @username."
+      placeholder: "@story-owner"
+    validations:
+      required: true
+  - type: input
+    id: parent_feature
+    attributes:
+      label: Parent Feature (issue number or link)
+      description: "Reference the parent feature for this story (e.g., #456)."
+      placeholder: "#456"
+    validations:
+      required: true
+  - type: textarea
+    id: user_story
+    attributes:
+      label: User Story
+      description: "Write the user story in the format: As a [user], I want [goal], so that [reason]."
+      placeholder: "As a user, I want to ... so that ..."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: "List clear, testable criteria for this story."
+      placeholder: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
+        - [ ] Criteria 3
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done (Checklist)
+      description: "Checklist of what must be true for this story to be considered done."
+      placeholder: |
+        - [ ] Code complete
+        - [ ] Unit tests written and passing
+        - [ ] Reviewed and merged
+        - [ ] Acceptance criteria met
+        - [ ] Documentation updated
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other context, links, or information.
+      placeholder: Optional

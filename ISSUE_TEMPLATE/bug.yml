@@ -1,0 +1,92 @@
+name: Bug
+description: Report a reproducible bug or unexpected behavior.
+title: "[Bug]: <concise summary>"
+labels: ["type: bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Overview
+        Please describe the bug, how to reproduce it, and its impact.
+  - type: input
+    id: bug_owner
+    attributes:
+      label: Bug Owner (GitHub username)
+      description: "Who is responsible for fixing this bug? Use @username."
+      placeholder: "@bug-owner"
+    validations:
+      required: true
+  - type: input
+    id: parent_story_or_feature
+    attributes:
+      label: Parent Story/Feature (issue number or link)
+      description: "Reference the parent story or feature for this bug (e.g., #789)."
+      placeholder: "#789"
+    validations:
+      required: true
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: Bug Description
+      description: "Describe the bug, including steps to reproduce, expected and actual behavior."
+      placeholder: |
+        Steps to reproduce:
+        1. ...
+        2. ...
+        Expected: ...
+        Actual: ...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria (Checklist)
+      description: "Checklist of what must be true for this bug to be considered fixed."
+      placeholder: |
+        - [ ] Bug is reproducible with provided steps
+        - [ ] Fix is implemented
+        - [ ] All related tests pass
+        - [ ] No regression introduced
+        - [ ] Stakeholder validation complete
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other context, links, or information.
+      placeholder: Optional
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: List the steps to reproduce the bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide details about your environment (OS, device, browser, version, etc.)
+      placeholder: e.g., macOS 14.5, Chrome 123.0, iPhone 15 Pro
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs or Screenshots
+      description: Paste any relevant logs or add screenshots to help explain your problem.
+      placeholder: Optional
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct.
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

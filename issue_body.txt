@@ -1,0 +1,21 @@
+## Task Description
+Test and validate the 3D mesh workflow on both Mac and Windows platforms to ensure a consistent and functional experience for all users.
+
+## Acceptance Criteria
+- Workflow is fully tested on Mac and Windows
+- Any platform-specific issues are identified and resolved
+- Documentation is updated to reflect platform support
+
+## Additional Notes
+- Parent Feature: #58
+- Parent Epic: #6
+
+## Task Owner
+TODO: Assign a task owner (@username)
+
+## Definition of Done (Checklist)
+- [ ] Code complete
+- [ ] Unit tests written and passing
+- [ ] Reviewed and merged
+- [ ] Acceptance criteria met
+- [ ] Documentation updated

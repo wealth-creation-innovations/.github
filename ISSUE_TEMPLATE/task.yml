@@ -1,0 +1,64 @@
+name: Task
+description: Track a specific, actionable task or to-do item.
+title: "[Task]: <concise summary>"
+labels: ["type: task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Task Overview
+        Please describe the technical or implementation task and its context.
+  - type: input
+    id: task_owner
+    attributes:
+      label: Task Owner (GitHub username)
+      description: "Who is responsible for this task? Use @username."
+      placeholder: "@task-owner"
+    validations:
+      required: true
+  - type: input
+    id: parent_story_or_feature
+    attributes:
+      label: Parent Story/Feature (issue number or link)
+      description: "Reference the parent story or feature for this task (e.g., #789)."
+      placeholder: "#789"
+    validations:
+      required: true
+  - type: textarea
+    id: task_description
+    attributes:
+      label: Task Description
+      description: "Describe the technical work to be done."
+      placeholder: "Implement the API endpoint for ..."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: "List clear, testable criteria for this task."
+      placeholder: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
+        - [ ] Criteria 3
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done (Checklist)
+      description: "Checklist of what must be true for this task to be considered done."
+      placeholder: |
+        - [ ] Code complete
+        - [ ] Unit tests written and passing
+        - [ ] Reviewed and merged
+        - [ ] Acceptance criteria met
+        - [ ] Documentation updated
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other context, links, or information.
+      placeholder: Optional

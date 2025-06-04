@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MetaMirror Support
+    url: https://metamirror.ai/support
+    about: Please use this link for general support requests.
+  - name: Security Vulnerability Disclosure
+    url: mailto:security@metamirror.ai
+    about: Please report security vulnerabilities privately to this address.
